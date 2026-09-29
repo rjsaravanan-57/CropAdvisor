@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CropAdvisor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CropAdvisor
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#raise-query">Raise Query</a>
+
+            <a href="#my-tickets">My Tickets</a>
+
+            <a href="#officer-dashboard">Officer Dashboard</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HOME ================= -->
+
+    <section id="home" class="section home-section">
+
+        <div class="home-content">
+
+            <h1>CropAdvisor</h1>
+
+            <h2>Crop Disease Query & Advisory System</h2>
+
+            <p>
+                Submit your crop-related problems and receive
+                guidance from an agricultural officer.
+            </p>
+
+            <a href="#raise-query" class="button">
+                Raise a Query
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RAISE QUERY ================= -->
+
+    <section id="raise-query" class="section">
+
+        <div class="container">
+
+            <h2>Raise a Crop Query</h2>
+
+            <p class="description">
+                Enter your crop problem below and submit it
+                to the CropAdvisor system.
+            </p>
+
+
+            <form id="queryForm">
+
+                <label for="farmerId">
+                    Farmer ID
+                </label>
+
+                <input
+                    type="number"
+                    id="farmerId"
+                    placeholder="Enter Farmer ID"
+                    required
+                >
+
+
+                <label for="crop">
+                    Crop Name
+                </label>
+
+                <input
+                    type="text"
+                    id="crop"
+                    placeholder="Example: Tomato"
+                    required
+                >
+
+
+                <label for="symptoms">
+                    Symptoms / Problem
+                </label>
+
+                <textarea
+                    id="symptoms"
+                    placeholder="Describe the crop problem..."
+                    required
+                ></textarea>
+
+
+                <label for="photoReference">
+                    Photo Reference
+                </label>
+
+                <input
+                    type="text"
+                    id="photoReference"
+                    placeholder="Example: tomato_leaf.jpg"
+                >
+
+
+                <button type="submit" class="button">
+                    Submit Query
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MY TICKETS ================= -->
+
+    <section id="my-tickets" class="section light-section">
+
+        <div class="container">
+
+            <h2>My Tickets</h2>
+
+            <p class="description">
+                Enter your Farmer ID to view your submitted queries.
+            </p>
+
+
+            <div class="search-row">
+
+                <input
+                    type="number"
+                    id="searchFarmerId"
+                    placeholder="Enter Farmer ID"
+                >
+
+                <button
+                    class="button"
+                    onclick="loadFarmerTickets()">
+                    View Tickets
+                </button>
+
+            </div>
+
+
+            <div id="farmerTickets">
+
+                <p class="message">
+                    Your tickets will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= OFFICER DASHBOARD ================= -->
+
+    <section id="officer-dashboard" class="section">
+
+        <div class="container">
+
+            <h2>Officer Dashboard</h2>
+
+            <p class="description">
+                View tickets assigned to an agricultural officer.
+            </p>
+
+
+            <div class="search-row">
+
+                <input
+                    type="number"
+                    id="officerId"
+                    placeholder="Enter Officer ID"
+                >
+
+                <button
+                    class="button"
+                    onclick="loadOfficerTickets()">
+                    View Assigned Tickets
+                </button>
+
+            </div>
+
+
+            <div id="officerTickets">
+
+                <p class="message">
+                    Assigned tickets will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 CropAdvisor
+        </p>
+
+        <p>
+            Crop Disease Query and Advisory System
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

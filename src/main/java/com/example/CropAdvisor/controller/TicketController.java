@@ -2,11 +2,13 @@ package com.example.CropAdvisor.controller;
 
 import com.example.CropAdvisor.entity.Ticket;
 import com.example.CropAdvisor.service.TicketService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {
@@ -17,36 +19,25 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
-    // Create ticket
+    // Create a new ticket
     @PostMapping
-    public ResponseEntity<Ticket> createTicket(
-            @RequestBody Ticket ticket) {
-
-        return ResponseEntity.ok(
-                ticketService.createTicket(ticket)
-        );
+    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
+        return ResponseEntity.ok(ticketService.createTicket(ticket));
     }
 
     // Get all tickets
     @GetMapping
     public ResponseEntity<List<Ticket>> getAllTickets() {
-
-        return ResponseEntity.ok(
-                ticketService.getAllTickets()
-        );
+        return ResponseEntity.ok(ticketService.getAllTickets());
     }
 
     // Get ticket by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Ticket> getTicketById(
-            @PathVariable Long id) {
-
-        return ResponseEntity.ok(
-                ticketService.getTicketById(id)
-        );
+    public ResponseEntity<Ticket> getTicketById(@PathVariable Long id) {
+        return ResponseEntity.ok(ticketService.getTicketById(id));
     }
 
-    // Get tickets by farmer
+    // Get tickets created by a farmer
     @GetMapping("/farmer/{farmerId}")
     public ResponseEntity<List<Ticket>> getTicketsByFarmer(
             @PathVariable Long farmerId) {
@@ -56,7 +47,7 @@ public class TicketController {
         );
     }
 
-    // Get tickets by officer
+    // Get tickets assigned to an officer
     @GetMapping("/officer/{officerId}")
     public ResponseEntity<List<Ticket>> getTicketsByOfficer(
             @PathVariable Long officerId) {
@@ -76,7 +67,7 @@ public class TicketController {
         );
     }
 
-    // Add recommendation
+    // Add recommendation to a ticket
     @PutMapping("/{ticketId}/recommendation")
     public ResponseEntity<Ticket> addRecommendation(
             @PathVariable Long ticketId,
@@ -92,7 +83,7 @@ public class TicketController {
         );
     }
 
-    // Close ticket
+    // Close a ticket
     @PutMapping("/{ticketId}/close")
     public ResponseEntity<Ticket> closeTicket(
             @PathVariable Long ticketId,
@@ -106,7 +97,7 @@ public class TicketController {
         );
     }
 
-    // Reopen ticket
+    // Reopen a ticket
     @PutMapping("/{ticketId}/reopen")
     public ResponseEntity<Ticket> reopenTicket(
             @PathVariable Long ticketId,
@@ -120,14 +111,14 @@ public class TicketController {
         );
     }
 
-    // Manually trigger escalation check
+    // Manually check and escalate old tickets
     @PutMapping("/escalate")
     public ResponseEntity<String> escalateTickets() {
 
         ticketService.escalateOldTickets();
 
         return ResponseEntity.ok(
-                "Old tickets checked and escalated"
+                "Old tickets checked and escalated."
         );
     }
 }
